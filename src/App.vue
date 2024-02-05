@@ -9,7 +9,7 @@
             <div
                 v-if="!isAccepted"
                 :class="{ 'flex-col': !isAccepted, 'md:flex-row': !isAccepted }"
-                class="flex gap-4 mt-3"
+                class="flex gap-4 mt-3 mr-20 md:mr-0"
             >
                 <button
                     class="text-white text-2xl font-bold py-2 px-6 md:px-14 rounded-md mb-2 md:mb-0 bg-teal-400"
@@ -18,7 +18,7 @@
                     Yes
                 </button>
                 <button
-                    class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-2 px-6 md:px-14 rounded-md btn-lg md:self-start"
+                    class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-2 px-6 md:px-14 rounded-md btn-lg md:self-start ml-2 md:ml-0"
                     @mouseover="moveButton"
                     @touchstart="moveButton"
                 >
@@ -53,10 +53,12 @@
                 <span class="text-md font-mono mt-1">&copy; 2024 Walelgn Dagne </span>
             </div>
         </footer>
+        <SpeedInsights />
     </div>
 </template>
 
 <script>
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 export default {
     data() {
         return {
@@ -122,14 +124,6 @@ body {
 .btn-lg {
     position: absolute;
     transition: 0.5s;
-    gap: 0.5rem;
     left: 55%;
-}
-@media (max-width: 768px) {
-    .click-me {
-        display: flex;
-        flex-direction: column;
-        left: 65%;
-    }
 }
 </style>
