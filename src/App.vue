@@ -19,7 +19,6 @@
                 </button>
                 <button
                     class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-2 px-6 md:px-14 rounded-md btn-lg md:self-start"
-                    @click="changeButtonText"
                     @mouseover="moveButton"
                     @touchstart="moveButton"
                 >
@@ -68,7 +67,7 @@ export default {
     methods: {
         accepted() {
             this.isAccepted = true
-            this.moveButton()
+            // this.moveButton()
         },
         moveButton() {
             if (this.isAccepted) {
@@ -95,16 +94,20 @@ export default {
         changeButtonText() {
             const texts = [
                 'You clicked by mistake!',
-                'Are you sure',
                 'Did you mean yes?',
-                'Last chance',
+                'Are you sure?',
                 'You are stubborn!',
                 'I am stubborn too',
+                'Last chance',
                 'You have to say yes',
+                'I can do this all day!!',
             ]
-            const currentIndex = texts.indexOf(this.buttonText)
-            const nextIndex = (currentIndex + 1) % texts.length
-            this.buttonText = texts[nextIndex]
+            const index = texts.indexOf(this.buttonText)
+            if (index === texts.length - 1) {
+                this.buttonText = texts[0]
+                return
+            }
+            this.buttonText = texts[index + 1]
         },
     },
 }
@@ -123,10 +126,10 @@ body {
     left: 55%;
 }
 @media (max-width: 768px) {
-    .btn-lg {
-        position: static;
-        left: auto;
-        top: auto;
+    .click-me {
+        display: flex;
+        flex-direction: column;
+        left: 65%;
     }
 }
 </style>
